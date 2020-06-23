@@ -3,6 +3,9 @@ name = "espim"
 version = "0.1.0"
 authors = ["M*C*O <mcofficer@gmx.de>"]
 edition = "2018"
+license = "GPL-3.0"
+description = "The Endless Sky Plug-In Manager"
+repository = "https://github.com/EndlessSkyCommunity/espim"
 
 [dependencies]
 anyhow = "1.0"
