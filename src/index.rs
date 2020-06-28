@@ -46,6 +46,7 @@ impl AvailablePlugin {
 }
 
 pub(crate) fn get_available_plugins() -> Result<Vec<AvailablePlugin>> {
+    debug!("Fetching available plug-ins");
     let resp = ureq::get(
         "https://github.com/EndlessSkyCommunity/endless-sky-plugins/raw/master/generated/plugins.json",
     )
@@ -54,5 +55,6 @@ pub(crate) fn get_available_plugins() -> Result<Vec<AvailablePlugin>> {
         return Err(anyhow!("Got bad status code {}", resp.status()));
     }
     let index: PluginIndex = resp.into_json_deserialize()?;
+    debug!("Got {} available plug-ins", index.0.len());
     Ok(index.0)
 }

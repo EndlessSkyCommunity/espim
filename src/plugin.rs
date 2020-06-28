@@ -66,12 +66,14 @@ impl Plugin {
 
     /// Removes the plug-in locally
     pub fn remove(&mut self) -> Result<()> {
-        fs::remove_dir_all(
-            self.path()
-                .ok_or_else(|| anyhow!("Not an installed Plug-In"))?,
-        )?;
-        self.installed = None;
-        Ok(())
+        if let Some(path) = self.path() {
+            info!("Removing {}", path.to_string_lossy());
+            fs::remove_dir_all(path)?;
+            self.installed = None;
+            Ok(())
+        } else {
+            Err(anyhow!("Not an installed Plug-In"))
+        }
     }
 
     /// Returns the (`installed`, `available`) versions, if known
