@@ -33,12 +33,16 @@ impl InstalledPlugin {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 struct AvailablePlugin {
     name: String,
-    url: String,
+    authors: String,
+    homepage: String,
+    license: String,
     version: String,
+    #[serde(alias = "shortDescription")]
+    short_description: String,
+    description: String,
+    url: String,
     #[serde(alias = "iconUrl")]
     icon_url: Option<String>,
-    author: String,
-    description: String,
 }
 
 pub fn retrieve_plugins() -> Result<Vec<Plugin>> {
