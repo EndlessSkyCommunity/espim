@@ -9,10 +9,6 @@ use ureq;
 struct PluginIndex(Vec<AvailablePlugin>);
 
 impl AvailablePlugin {
-    pub fn download_url(&self) -> String {
-        format!("{}/archive/{}.zip", self.url, self.version)
-    }
-
     pub fn download(&self) -> Result<InstalledPlugin> {
         let mut destination =
             es_plugin_dir().ok_or_else(|| anyhow!("Failed to get ES Plug-In Dir"))?;
@@ -29,7 +25,7 @@ impl AvailablePlugin {
         }
         fs::create_dir_all(&destination)?;
 
-        let bytes = util::download(&self.download_url())?;
+        let bytes = util::download(&self.url)?;
         util::unzip(&destination, bytes)?;
 
         let mut version_file_path = destination;
@@ -48,7 +44,7 @@ impl AvailablePlugin {
 pub(crate) fn get_available_plugins() -> Result<Vec<AvailablePlugin>> {
     debug!("Fetching available plug-ins");
     let resp = ureq::get(
-        "https://github.com/EndlessSkyCommunity/endless-sky-plugins/raw/master/generated/plugins.json",
+        "https://github.com/EndlessSkyCommunity/endless-sky-plugins/raw/rfc/generated/plugins.json", // TODO
     )
     .call();
     if resp.error() {
