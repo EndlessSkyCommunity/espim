@@ -44,7 +44,7 @@ impl AvailablePlugin {
 pub(crate) fn get_available_plugins() -> Result<Vec<AvailablePlugin>> {
     debug!("Fetching available plug-ins");
     let resp = ureq::get(
-        "https://github.com/EndlessSkyCommunity/endless-sky-plugins/raw/rfc/generated/plugins.json", // TODO
+        "https://github.com/EndlessSkyCommunity/endless-sky-plugins/raw/master/generated/plugins.json",
     )
     .call();
     if resp.error() {
