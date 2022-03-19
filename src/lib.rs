@@ -14,7 +14,7 @@ use anyhow::Result;
 pub use plugin::Plugin;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
-pub use util::unzip;
+pub use util::unpack;
 
 #[derive(Debug, Clone)]
 struct InstalledPlugin {

@@ -1,6 +1,7 @@
 use crate::{es_plugin_dir, util, AvailablePlugin, InstalledPlugin};
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
+use std::path::PathBuf;
 use std::fs;
 use std::io::Write;
 use ureq;
@@ -26,7 +27,7 @@ impl AvailablePlugin {
         fs::create_dir_all(&destination)?;
 
         let bytes = util::download(&self.url)?;
-        util::unzip(&destination, bytes)?;
+        util::unpack(&PathBuf::from(&self.url), &destination, bytes)?;
 
         let mut version_file_path = destination;
         version_file_path.push(".version");
