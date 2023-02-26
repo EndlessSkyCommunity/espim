@@ -4,10 +4,7 @@ use std::io::{Cursor, Read};
 use std::path::PathBuf;
 
 pub(crate) fn download(url: &str) -> Result<Vec<u8>> {
-    let resp = ureq::get(url).call();
-    if resp.error() {
-        return Err(anyhow!("Got bad status code {}", resp.status()));
-    }
+    let resp = ureq::get(url).call()?;
 
     let mut reader = io::BufReader::new(resp.into_reader());
     let mut bytes = vec![];
