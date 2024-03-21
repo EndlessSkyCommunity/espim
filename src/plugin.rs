@@ -36,6 +36,22 @@ impl Plugin {
         Some(self.installed.as_ref()?.path())
     }
 
+    /// Returns the plug-in's homepage, if it is available
+    pub fn homepage(&self) -> Option<String> {
+        Some(self.available.as_ref()?.homepage.clone())
+    }
+
+    /// Returns the plug-in's short description, if it is available
+    pub fn short_description(&self) -> Option<String> {
+        Some(self.available.as_ref()?.short_description.clone())
+    }
+
+    /// Returns the plug-in's description, if it is available
+    pub fn description(&self) -> Option<String> {
+        Some(self.available.as_ref()?.description.clone())
+    }
+
+
     /// Attempts to retrieve the plug-in's icon from a number of sources.
     pub fn retrieve_icon(&self) -> Option<Vec<u8>> {
         if let Some(i) = &self.installed {
