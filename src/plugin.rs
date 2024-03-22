@@ -51,7 +51,6 @@ impl Plugin {
         Some(self.available.as_ref()?.description.clone())
     }
 
-
     /// Attempts to retrieve the plug-in's icon from a number of sources.
     pub fn retrieve_icon(&self) -> Option<Vec<u8>> {
         if let Some(i) = &self.installed {
