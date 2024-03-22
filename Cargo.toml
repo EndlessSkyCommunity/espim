@@ -1,6 +1,6 @@
 [package]
 name = "espim"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["M*C*O <mcofficer@gmx.de>"]
 edition = "2018"
 license = "GPL-3.0"
