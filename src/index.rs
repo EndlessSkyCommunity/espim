@@ -47,7 +47,7 @@ pub(crate) fn get_available_plugins() -> Result<Vec<AvailablePlugin>> {
         "https://github.com/EndlessSkyCommunity/endless-sky-plugins/raw/master/generated/plugins.json",
     )
     .call()?;
-    let index: PluginIndex = resp.into_json()?;
+    let index: PluginIndex = resp.into_body().read_json()?;
     debug!("Got {} available plug-ins", index.0.len());
     Ok(index.0)
 }

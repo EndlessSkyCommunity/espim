@@ -9,8 +9,8 @@ repository = "https://github.com/EndlessSkyCommunity/espim"
 
 [dependencies]
 anyhow = "1.0"
-dirs = "4.0"
+dirs = "6.0"
 log = "0.4"
-serde = { version = "1.0", default_features = false, features = ["derive"] }
-ureq = { version = "2.6", default_features = false, features = ["json", "tls"] }
-zip-extract = { version = "0.1", default_features = false, features = ["deflate"] }
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+ureq = { version = "3.0", features = ["json"] }
+zip = { version = "4.3", default-features = false, features = ["deflate"] }
