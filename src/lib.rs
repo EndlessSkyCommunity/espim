@@ -39,6 +39,7 @@ struct AvailablePlugin {
     version: String,
     #[serde(alias = "shortDescription")]
     short_description: String,
+    #[serde(default)]
     description: String,
     url: String,
     #[serde(alias = "iconUrl")]
