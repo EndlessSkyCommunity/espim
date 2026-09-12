@@ -48,7 +48,7 @@ impl Plugin {
 
     /// Returns the plug-in's description, if it is available
     pub fn description(&self) -> Option<String> {
-        Some(self.available.as_ref()?.description.clone())
+        self.available.as_ref()?.description.clone()
     }
 
     /// Attempts to retrieve the plug-in's icon from a number of sources.
