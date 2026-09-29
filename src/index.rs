@@ -1,4 +1,4 @@
-use crate::{es_plugin_dir, util, AvailablePlugin, InstalledPlugin};
+use crate::{AvailablePlugin, InstalledPlugin, es_plugin_dir, util};
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
 use std::fs;

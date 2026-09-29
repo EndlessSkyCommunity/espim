@@ -1,4 +1,4 @@
-use crate::{es_plugin_dir, InstalledPlugin};
+use crate::{InstalledPlugin, es_plugin_dir};
 use anyhow::Result;
 use std::fs;
 use std::path::PathBuf;
